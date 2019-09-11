@@ -23,8 +23,6 @@ RUN chown -R www-data:www-data \
 
 RUN php artisan cache:clear
 
-RUN php artisan optimize
-
 RUN  apt-get install -y libmcrypt-dev \
         libmagickwand-dev --no-install-recommends \
         && pecl install mcrypt-1.0.2 \
@@ -33,4 +31,3 @@ RUN  apt-get install -y libmcrypt-dev \
 
 RUN mv .env.prod .env
 
-RUN php artisan optimize

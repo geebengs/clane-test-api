@@ -1,0 +1,316 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Clane Test API",
+        "contact": {
+            "name": "Gbenga Sodunke",
+            "url": "#"
+        },
+        "version": "1.0"
+    },
+    "basePath": "/api/v1",
+    "paths": {
+        "/articles": {
+            "get": {
+                "tags": [
+                    "Article"
+                ],
+                "summary": "Get list of articles",
+                "description": "Returns list of articles",
+                "operationId": "getArticleList",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_security_example": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Article"
+                ],
+                "summary": "create a articles",
+                "description": "Create an article",
+                "operationId": "CreateArticle",
+                "parameters": [
+                    {
+                        "name": "article",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Article"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_security_example": []
+                    }
+                ]
+            }
+        },
+        "/articles/{id}": {
+            "get": {
+                "tags": [
+                    "Article"
+                ],
+                "summary": "Fetch article details",
+                "operationId": "getArticle",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "$ref": "#/definitions/Article"
+                        }
+                    },
+                    "default": {
+                        "description": "error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Article"
+                ],
+                "summary": "Delete article",
+                "operationId": "Delete an article item",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Article"
+                ],
+                "summary": "Update an article information",
+                "operationId": "updateArticle",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "article",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ArticleUpdate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "$ref": "#/definitions/ArticleUpdate"
+                        }
+                    },
+                    "default": {
+                        "description": "error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/articles/{id}/rating": {
+            "post": {
+                "tags": [
+                    "Article"
+                ],
+                "summary": "Rate an article information",
+                "operationId": "rateArticle",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "$ref": "#/definitions/ArticleUpdate"
+                        }
+                    },
+                    "default": {
+                        "description": "error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "login a user",
+                "description": "Login a user",
+                "operationId": "Login",
+                "parameters": [
+                    {
+                        "name": "login",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Login"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key_security_example": []
+                    }
+                ]
+            }
+        }
+    },
+    "definitions": {
+        "Article": {
+            "required": [
+                "title",
+                "content",
+                "user_id",
+                "published"
+            ],
+            "properties": {
+                "user_id": {
+                    "description": "Author Id",
+                    "type": "integer"
+                },
+                "title": {
+                    "description": "Title",
+                    "type": "string"
+                },
+                "content": {
+                    "description": "Content",
+                    "type": "string"
+                },
+                "published": {
+                    "description": "Published Status",
+                    "type": "boolean"
+                }
+            }
+        },
+        "ArticleUpdate": {
+            "required": [
+                "id",
+                "title",
+                "content",
+                "user_id",
+                "published"
+            ],
+            "properties": {
+                "id": {
+                    "description": "Id",
+                    "type": "integer"
+                },
+                "user_id": {
+                    "description": "Author Id",
+                    "type": "integer"
+                },
+                "title": {
+                    "description": "Title",
+                    "type": "string"
+                },
+                "content": {
+                    "description": "Content",
+                    "type": "string"
+                },
+                "published": {
+                    "description": "Published Status",
+                    "type": "boolean"
+                }
+            }
+        },
+        "Login": {
+            "required": [
+                "email",
+                "password"
+            ],
+            "properties": {
+                "email": {
+                    "description": "Jobboard Name",
+                    "type": "string"
+                },
+                "password": {
+                    "description": "Class ApiController",
+                    "type": "string"
+                }
+            }
+        },
+        "Error": {
+            "required": [
+                "code",
+                "message"
+            ],
+            "properties": {
+                "code": {
+                    "description": "Class ApiController",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "description": "Class ApiController",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
