@@ -26,5 +26,5 @@ CLANE TEST API
 # Testing Instruction
 - If you followed the instruction above step by step, a user would have been seeded to the database.
 - Login using this endpoint: http://localhost:8990/api/v1/auth/login. User details, 
-  email: clane.test@gmail.com | Password: "password".
+  email: clane.tester@gmail.com | Password: "password".
 - Use access token returned to call authenticated routes by adding an Authorization header with Bearer "access token" as         value. (Using postman to test api is recommended)
