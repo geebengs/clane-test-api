@@ -18,13 +18,13 @@ CLANE TEST API
 - run php artisan migrate
 - run php artisan db:seed
 - run docker-compose up --build to build docker image
-- Application will run on http://localhost:8990
+- Application will run on [http://localhost:8990](http://localhost:8990)
 
 # API Documentation
-- You will see the complete api documentation on http://localhost:8990/api/documentation
+- You will see the complete api documentation on [http://localhost:8990/api/documentation](http://localhost:8990/api/documentation)
 
 # Testing Instruction
 - If you followed the instruction above step by step, a user would have been seeded to the database.
-- Login using this endpoint: http://localhost:8990/api/v1/auth/login. User details, 
+- Login using this endpoint: [http://localhost:8990/api/v1/auth/login](http://localhost:8990/api/v1/auth/login). User details, 
   email: clane.tester@gmail.com | Password: "password".
 - Use access token returned to call authenticated routes by adding an Authorization header with Bearer "access token" as         value. (Using postman to test api is recommended)
