@@ -15,9 +15,9 @@ CLANE TEST API
 - cd on a command prompt to root of the project folder and RUN composer update
 - Update .env file with your database information
 - run composer dump-autoload
-- run php artisan migrate
-- run php artisan db:seed
 - run docker-compose up --build to build docker image
+- run php artisan migrate within the container
+- run php artisan db:seed within the container
 - Application will run on [http://localhost:8990](http://localhost:8990)
 
 # API Documentation
